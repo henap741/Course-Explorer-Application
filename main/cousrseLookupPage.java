@@ -32,7 +32,7 @@ public class cousrseLookupPage extends JFrame {
 			}
 		});
 	}
-
+	
 	/**
 	 * Create the frame.
 	 */
@@ -57,7 +57,7 @@ public class cousrseLookupPage extends JFrame {
 		
 		courseLookupField = new JTextField();
 		courseLookupField.setFont(new Font("Times New Roman", Font.PLAIN, 12));
-		courseLookupField.setBounds(155, 39, 197, 22);
+		courseLookupField.setBounds(122, 39, 230, 22);
 		contentPane.add(courseLookupField);
 		courseLookupField.setColumns(10);
 		

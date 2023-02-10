@@ -37,7 +37,7 @@ public class loginScreen extends JFrame {
 			}
 		});
 	}
-
+	
 	/**
 	 * Create the frame.
 	 */
