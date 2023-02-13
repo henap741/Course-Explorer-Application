@@ -16,7 +16,7 @@ import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 
-public class loginScreen extends JFrame {
+public class loginScreenPage extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField usernameField;
@@ -29,7 +29,7 @@ public class loginScreen extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					loginScreen frame = new loginScreen();
+					loginScreenPage frame = new loginScreenPage();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -41,7 +41,7 @@ public class loginScreen extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public loginScreen() {
+	public loginScreenPage() {
 		setTitle("Login");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
