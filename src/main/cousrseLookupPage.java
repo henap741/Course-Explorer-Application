@@ -87,6 +87,5 @@ public class cousrseLookupPage extends JFrame {
 		      }
 		    });
 		    contentPane.add(home_button, BorderLayout.EAST);
-		    //contentPane.add(home_button);
 	}
 }
