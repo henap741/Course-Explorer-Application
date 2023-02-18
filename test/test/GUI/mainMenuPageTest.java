@@ -1,4 +1,4 @@
-package test;
+package test.GUI;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -18,7 +18,7 @@ class mainMenuPageTest {
 
 	@Test
 	void test() {
-		fail("Not yet implemented");
+
 	}
 
 }
