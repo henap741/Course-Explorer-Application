@@ -3,7 +3,7 @@ LOG ITR 1
 =========================================================
 Daoud 
 =========================================================
---> Worked on adding test suites
+--> Worked on adding test suites and mock data
 --> Worked on designing setup for SQL server online
 --> Worked on codebase structure
 
