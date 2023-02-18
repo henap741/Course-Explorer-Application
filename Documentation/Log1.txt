@@ -1,0 +1,29 @@
+LOG ITR 1 
+
+=========================================================
+Daoud 
+=========================================================
+--> Worked on adding test suites
+--> Worked on designing setup for SQL server online
+--> Worked on codebase structure
+
+=========================================================
+Hena 
+=========================================================
+--> Worked on GUI Pages
+--> Worked on UI Navigation
+--> Worked on adding tests
+
+=========================================================
+Haisam 
+=========================================================
+--> Worked on UI Refinement Sketches
+--> Worked on architecture layout of application
+--> Worked on planning 
+--> Worked on code refactoring and assisted in various development 
+
+=========================================================
+Julianna
+=========================================================
+--> Worked on planning and designing
+--> Worked on code debugging, testing, refactoring
