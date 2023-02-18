@@ -1,4 +1,4 @@
-package main;
+package main.GUI.Pages;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -42,36 +42,36 @@ public class courseDetailsPage extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JButton settings_button = new JButton("Settings");
 		settings_button.setFont(new Font("Times New Roman", Font.BOLD, 12));
 		settings_button.setBounds(10, 231, 91, 23);
 		contentPane.add(settings_button);
-		
+
 		JButton back_button = new JButton("Back");
 		back_button.setFont(new Font("Times New Roman", Font.BOLD, 12));
 		back_button.setBounds(133, 11, 63, 23);
 		back_button.addActionListener(new ActionListener() {
-		      public void actionPerformed(ActionEvent e) {
-		        mainMenuPage mainMenuPage = new mainMenuPage();
-		        mainMenuPage.setVisible(true);
-		        dispose();
-		      }
-		    });
-		    contentPane.add(back_button, BorderLayout.WEST);
-		
+			public void actionPerformed(ActionEvent e) {
+				mainMenuPage mainMenuPage = new mainMenuPage();
+				mainMenuPage.setVisible(true);
+				dispose();
+			}
+		});
+		contentPane.add(back_button, BorderLayout.WEST);
+
 		JButton home_button = new JButton("Home");
 		home_button.setFont(new Font("Times New Roman", Font.BOLD, 12));
 		home_button.setBounds(200, 11, 63, 23);
 		home_button.addActionListener(new ActionListener() {
-		      public void actionPerformed(ActionEvent e) {
-		        mainMenuPage mainMenuPage = new mainMenuPage();
-		        mainMenuPage.setVisible(true);
-		        dispose();
-		      }
-		    });
-		    contentPane.add(home_button, BorderLayout.EAST);
-		//contentPane.add(home_button);
+			public void actionPerformed(ActionEvent e) {
+				mainMenuPage mainMenuPage = new mainMenuPage();
+				mainMenuPage.setVisible(true);
+				dispose();
+			}
+		});
+		contentPane.add(home_button, BorderLayout.EAST);
+		// contentPane.add(home_button);
 	}
 
 }

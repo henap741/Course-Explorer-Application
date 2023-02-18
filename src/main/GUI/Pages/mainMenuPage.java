@@ -1,4 +1,4 @@
-package main;
+package main.GUI.Pages;
 
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
@@ -17,11 +17,11 @@ public class mainMenuPage extends JFrame {
 	private JPanel contentPane;
 	private cousrseLookupPage courseLookupPage;
 	private facultyInfoPage facultyInfoPage;
-	
+
 	/**
 	 * Launch the application.
 	 */
-	
+
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -34,7 +34,7 @@ public class mainMenuPage extends JFrame {
 			}
 		});
 	}
-	
+
 	/**
 	 * Create the frame.
 	 */
@@ -46,17 +46,17 @@ public class mainMenuPage extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JToggleButton settings_button = new JToggleButton("Settings");
 		settings_button.setBounds(10, 231, 110, 23);
 		settings_button.setFont(new Font("Times New Roman", Font.BOLD, 12));
 		contentPane.add(settings_button);
-		
+
 		JLabel menu_label = new JLabel("Menu");
 		menu_label.setBounds(274, 11, 48, 14);
 		menu_label.setFont(new Font("Times New Roman", Font.BOLD, 16));
 		contentPane.add(menu_label);
-		
+
 		JButton course_lookup_button = new JButton("Course Lookup");
 		course_lookup_button.setBounds(201, 53, 196, 23);
 		course_lookup_button.setFont(new Font("Times New Roman", Font.BOLD, 12));
@@ -69,17 +69,17 @@ public class mainMenuPage extends JFrame {
 			}
 		});
 		contentPane.add(course_lookup_button);
-		
+
 		JButton degree_checklist_button = new JButton("Degree Checklist");
 		degree_checklist_button.setBounds(201, 102, 196, 23);
 		degree_checklist_button.setFont(new Font("Times New Roman", Font.BOLD, 12));
 		contentPane.add(degree_checklist_button);
-		
+
 		JButton suggested_path_button = new JButton("Suggested Path");
 		suggested_path_button.setBounds(201, 152, 196, 23);
 		suggested_path_button.setFont(new Font("Times New Roman", Font.BOLD, 12));
 		contentPane.add(suggested_path_button);
-		
+
 		JButton faculty_info_button = new JButton("Faculty Information");
 		faculty_info_button.setFont(new Font("Times New Roman", Font.BOLD, 12));
 		faculty_info_button.setBounds(201, 200, 196, 23);
@@ -94,4 +94,3 @@ public class mainMenuPage extends JFrame {
 		contentPane.add(faculty_info_button);
 	}
 }
-
