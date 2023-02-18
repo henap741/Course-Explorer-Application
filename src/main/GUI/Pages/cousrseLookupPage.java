@@ -1,4 +1,4 @@
-package main;
+package main.GUI.Pages;
 
 import java.awt.EventQueue;
 import java.awt.BorderLayout;
@@ -35,7 +35,7 @@ public class cousrseLookupPage extends JFrame {
 			}
 		});
 	}
-	
+
 	/**
 	 * Create the frame.
 	 */
@@ -47,45 +47,45 @@ public class cousrseLookupPage extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JToggleButton search_button = new JToggleButton("Search");
 		search_button.setBounds(353, 38, 75, 23);
 		search_button.setFont(new Font("Times New Roman", Font.BOLD, 12));
 		contentPane.add(search_button);
-		
+
 		JButton settings_button = new JButton("Settings");
 		settings_button.setFont(new Font("Times New Roman", Font.BOLD, 12));
 		settings_button.setBounds(10, 231, 91, 23);
 		contentPane.add(settings_button);
-		
+
 		courseLookupField = new JTextField();
 		courseLookupField.setFont(new Font("Times New Roman", Font.PLAIN, 12));
 		courseLookupField.setBounds(122, 39, 230, 22);
 		contentPane.add(courseLookupField);
 		courseLookupField.setColumns(10);
-		
+
 		JButton back_button = new JButton("Back");
 		back_button.setFont(new Font("Times New Roman", Font.BOLD, 12));
 		back_button.setBounds(122, 11, 62, 23);
 		back_button.addActionListener(new ActionListener() {
-		      public void actionPerformed(ActionEvent e) {
-		        mainMenuPage mainMenuPage = new mainMenuPage();
-		        mainMenuPage.setVisible(true);
-		        dispose();
-		      }
-		    });
-		    contentPane.add(back_button, BorderLayout.WEST);
-		
+			public void actionPerformed(ActionEvent e) {
+				mainMenuPage mainMenuPage = new mainMenuPage();
+				mainMenuPage.setVisible(true);
+				dispose();
+			}
+		});
+		contentPane.add(back_button, BorderLayout.WEST);
+
 		JButton home_button = new JButton("Home");
 		home_button.setFont(new Font("Times New Roman", Font.BOLD, 12));
 		home_button.setBounds(186, 11, 68, 23);
 		home_button.addActionListener(new ActionListener() {
-		      public void actionPerformed(ActionEvent e) {
-		        mainMenuPage mainMenuPage = new mainMenuPage();
-		        mainMenuPage.setVisible(true);
-		        dispose();
-		      }
-		    });
-		    contentPane.add(home_button, BorderLayout.EAST);
+			public void actionPerformed(ActionEvent e) {
+				mainMenuPage mainMenuPage = new mainMenuPage();
+				mainMenuPage.setVisible(true);
+				dispose();
+			}
+		});
+		contentPane.add(home_button, BorderLayout.EAST);
 	}
 }
