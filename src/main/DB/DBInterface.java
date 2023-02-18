@@ -3,7 +3,7 @@ package main.DB;
 public interface DBInterface {
 
     // Login/Signup Methods
-    public void createAccount();
+    public Boolean createAccount();
 
     public void readAccount();
 
