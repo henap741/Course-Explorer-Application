@@ -26,7 +26,7 @@ public class connectToDB {
 
             Statement stat = c1.createStatement();
 
-            ResultSet rs = stat.executeQuery("SELECT * FROM userTable");
+            ResultSet rs = stat.executeQuery("SELECT * FROM userData");
 
             while (rs.next()) {
                 System.out.println(rs.getString("password"));
