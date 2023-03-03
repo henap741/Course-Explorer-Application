@@ -7,6 +7,9 @@ import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import main.BusinessLogic.ProgramPathway.OsgoodeLawSchool;
+
 import javax.swing.JToggleButton;
 import java.awt.Font;
 import javax.swing.JLabel;
@@ -17,7 +20,19 @@ public class mainMenuPage extends JFrame {
 	private JPanel contentPane;
 	private cousrseLookupPage courseLookupPage;
 	private facultyInfoPage facultyInfoPage;
+	private courseDetailsPage courseDetailsPage;
+	private OsgoodeLawSchool osgoode;
 
+    public mainMenuPage(OsgoodeLawSchool osgoode) {
+        this.osgoode = osgoode;
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setBounds(100, 100, 450, 300);
+        contentPane = new JPanel();
+        contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+        setContentPane(contentPane);
+        contentPane.setLayout(null);
+    }
+    
 	/**
 	 * Launch the application.
 	 */
@@ -78,6 +93,15 @@ public class mainMenuPage extends JFrame {
 		JButton suggested_path_button = new JButton("Suggested Path");
 		suggested_path_button.setBounds(201, 152, 196, 23);
 		suggested_path_button.setFont(new Font("Times New Roman", Font.BOLD, 12));
+		suggested_path_button.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				OsgoodeLawSchool osgoode = new OsgoodeLawSchool();
+				courseDetailsPage courseDetailsPage = new courseDetailsPage(osgoode);
+				courseDetailsPage.setVisible(true);
+				setVisible(false);
+			}
+		});
 		contentPane.add(suggested_path_button);
 
 		JButton faculty_info_button = new JButton("Faculty Information");
