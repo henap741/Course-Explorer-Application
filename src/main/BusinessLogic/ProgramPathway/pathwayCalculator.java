@@ -9,7 +9,7 @@ public class pathwayCalculator {
 
 	    public pathwayCalculator(String programName, String programDescription, ArrayList<courses> requiredCourses) {
 	        this.programName = programName;
-	        this.programDescription = programDescription;
+	        this.programDescription = programDescription; //added
 	        this.requiredCourses = requiredCourses;
 	    }
 
