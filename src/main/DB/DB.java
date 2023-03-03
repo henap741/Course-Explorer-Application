@@ -27,9 +27,12 @@ public class DB implements DBInterface {
 
     }
 
-    @Override
-    public void createCourseInfo() {
-        // TODO Auto-generated method stub
+    // public void createCourseInfo(String courseName, String courseDesc, String
+    // courseTerm, String courseSection,
+    // String courseCatNum, String courseInstructor, String courseStartTime, String
+    // courseDuration,
+    // String courseNotes, String courseSectionDirector, String courseCredits) {
+    // if (courseName)
 
     }
 
@@ -79,6 +82,15 @@ public class DB implements DBInterface {
     public void updateDegreeReq() {
         // TODO Auto-generated method stub
 
+    }
+
+    public Boolean checkFuncParams(String... args) {
+        for (String arg : args) {
+            if (arg == null || arg.isEmpty()) {
+                return false;
+            }
+        }
+        return true;
     }
 
 }

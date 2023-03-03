@@ -1,4 +1,4 @@
-package main.DB.util;
+package main.DB;
 
 import java.sql.*;
 
