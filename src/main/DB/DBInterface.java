@@ -3,16 +3,16 @@ package main.DB;
 public interface DBInterface {
 
     // Login/Signup Methods
-    public Boolean createAccount();
+    public String[] createUser();
 
-    public void readAccount();
+    public String[] readUser();
 
     // Course Methods
-    public void createCourseInfo();
+    public String[] createCourseInfo();
 
-    public void readCourseInfo();
+    public String[] readCourseInfo();
 
-    public void updateCourseInfo();
+    public String[] updateCourseInfo();
 
     // Faculty/Staff Methods
     public void createFacultyInfo();

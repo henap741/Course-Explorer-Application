@@ -2,6 +2,10 @@ package main.DB.util;
 
 import java.sql.*;
 
+import main.DB.DB;
+
+import main.DB.util.*;
+
 public class connectToDB {
     String connectionURL = "jdbc:mysql://sql.freedb.tech:3306/freedb_TestTest";
     String user = "freedb_123123123213";
@@ -20,19 +24,23 @@ public class connectToDB {
 
     public static void main(String[] args) {
         try {
-            connectToDB c = new connectToDB();
+            DB DBInstance = new DB();
+            String courseID = "fakeID";
+            String courseNotes = "fakeNotes123";
+            String courseSectionDirector = "fakeSectionDirector123";
+            String courseName = "fakeCourseNotes123";
+            String courseDesc = "fakeDesc123";
+            String courseTerm = "fakeCourseTerm123";
+            String courseSection = "fakeCourseSection123";
+            String courseCatNum = "CS2F3";
+            String courseInstructor = "fakeCourseInstruct";
+            String courseStartTime = "fakeStrtTime";
+            String courseDuration = "fakeDuration";
+            String courseCredits = "fakeCredits";
 
-            Connection c1 = c.getConnection();
-
-            Statement stat = c1.createStatement();
-
-            ResultSet rs = stat.executeQuery("SELECT * FROM userData");
-
-            while (rs.next()) {
-                System.out.println(rs.getString("password"));
-            }
-
-            c1.close();
+            String[] result = DBInstance.readCourseInfo(courseNotes);
+            util util = new util();
+            util.printResult(result);
         } catch (Exception e) {
             System.out.println(e);
         }
