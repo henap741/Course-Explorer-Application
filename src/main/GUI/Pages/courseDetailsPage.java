@@ -243,8 +243,10 @@ public class courseDetailsPage extends JFrame {
               // Update degree info text area with selected degree's description
               pathwayCalculator selectedDegree = osgoode.getDegreeProgram((String)degreeComboBox.getSelectedItem());
               degreeInfoTextArea.setText("Degree Name: " + selectedDegree.getProgramName() + "\n" +
+            		  "Degree Duration: " + selectedDegree.getProgramDuration() + "\n" +
+            		  "Required Credits for Degree: " + selectedDegree.getRequiredCredits() + "\n" +
                       "Degree Description: " + selectedDegree.getProgramDescription());
-  
+ 
               // Enable view courses button
               viewCoursesButton.setEnabled(true);
 //            if (selectedDegree != null) {
@@ -294,11 +296,15 @@ public class courseDetailsPage extends JFrame {
             courses selectedCourse = osgoode.getCourse(selectedCourseCode);
             if (selectedCourse != null) {
                 String courseName = selectedCourse.getCourseName();
+                String courseCredits = selectedCourse.getCourseCredits();
+                String courseTerm = selectedCourse.getCourseTerm();
                 String courseDescription = selectedCourse.getCourseDescription();
                 String courseInstructor = selectedCourse.getInstructor();
-                courseInfoTextArea.setText("Course Description: " + "Course Name: " + courseName + "\n" +
-                                            "Course Description: " + courseDescription + "\n" +
-                                            "Course Professor: " + courseInstructor);
+                courseInfoTextArea.setText("Course Name: " + courseName + "\n" +
+                							"Course Credits: " + courseCredits + "\n" +
+                							"Course Term: " + courseTerm + "\n" +
+                                            "Course Professor: " + courseInstructor + "\n" +
+                                            "Course Description: " + courseDescription);
             } else {
                 courseInfoTextArea.setText("Error: Course details not found.");
             }
