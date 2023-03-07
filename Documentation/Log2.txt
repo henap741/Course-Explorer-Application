@@ -1,0 +1,28 @@
+LOG ITR 1 
+
+=======================================================================
+Hena 
+=======================================================================
+--> Worked on Business Logic for Program Pathway
+--> Worked on GUI Page for courseDetailPage (Added logic and UI)
+--> Worked on UI Navigation (from mainMenuPage to other pages)
+--> Worked on JUINT tests for Program Pathway logic
+--> Worked on JUINT tests for courseDetailPage
+--> Created table degreesOffered and populated it with data
+--> Made additions to table courseDetails and populated it with data
+--> Created methods for retrieving data from degreesOffered (!TO DO)
+
+=======================================================================
+Daoud 
+=======================================================================
+--> 
+
+=======================================================================
+Haisam 
+=======================================================================
+-->  
+
+=======================================================================
+Julianna
+=======================================================================
+--> 
