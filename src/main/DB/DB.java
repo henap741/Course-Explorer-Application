@@ -40,14 +40,14 @@ public class DB implements DBInterface {
     public String[] createCourseInfo(String courseID, String courseName, String courseDesc, String courseTerm,
             String courseSection,
             String courseCatNum, String courseInstructor, String courseStartTime, String courseDuration,
-            String courseNotes, String courseSectionDirector, String courseCredits) {
+            String courseNotes, String courseSectionDirector, String courseCredits, String courseYear, String coursePrerequisites, String degreeName) {
 
         // Check if any parameters are empty or invalid
         // If optional parameters are empty or null, set to empty string ""
         if (!checkEmptyOrNullString(new String[] { courseNotes, courseSectionDirector }, courseID, courseName,
                 courseDesc,
                 courseTerm, courseSection, courseCatNum, courseInstructor,
-                courseStartTime, courseDuration, courseCredits)) {
+                courseStartTime, courseDuration, courseCredits, courseYear, coursePrerequisites, degreeName)) {
             String[] failedResult = { "failure", "Required parameters were empty or null" };
             return failedResult;
         }
@@ -68,6 +68,9 @@ public class DB implements DBInterface {
             pstmt.setString(10, courseNotes);
             pstmt.setString(11, courseSectionDirector);
             pstmt.setString(12, courseCredits);
+            pstmt.setString(13, courseYear);
+            pstmt.setString(14, coursePrerequisites);
+            pstmt.setString(15, degreeName);
 
             pstmt.executeUpdate();
 
@@ -113,7 +116,7 @@ public class DB implements DBInterface {
 
             DBConnection.close();
             String[] returnStringArray = allResults.toArray(new String[0]);
-
+            System.out.print(returnStringArray);
             return returnStringArray;
 
         } catch (Exception e) {
