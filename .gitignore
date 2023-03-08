@@ -9,6 +9,7 @@
 *.nar
 hs_err_pid*
 replay_pid*
+*.classpath
 
 ##############################
 ## Maven
@@ -84,3 +85,5 @@ nb-configuration.xml
 ##############################
 .DS_Store
 /bin/
+.classpath
+
