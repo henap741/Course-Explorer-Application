@@ -10,6 +10,8 @@ import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.Component;
 import javax.swing.Box;
 import javax.swing.JButton;
@@ -21,6 +23,7 @@ public class loginScreenPage extends JFrame {
 	private JPanel contentPane;
 	private JTextField usernameField;
 	private JPasswordField passwordField;
+	private mainMenuPage mainMenuPage;
 
 	/**
 	 * Launch the application.
@@ -83,6 +86,14 @@ public class loginScreenPage extends JFrame {
 		JButton guest_button = new JButton("Guest");
 		guest_button.setFont(new Font("Times New Roman", Font.BOLD, 12));
 		guest_button.setBounds(121, 215, 91, 23);
+		guest_button.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				mainMenuPage = new mainMenuPage();
+				mainMenuPage.setVisible(true);
+				setVisible(false);
+			}
+		});
 		contentPane.add(guest_button);
 
 		JButton sign_up_button = new JButton("Sign up");
