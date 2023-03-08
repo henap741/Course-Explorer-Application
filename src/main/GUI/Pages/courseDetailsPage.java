@@ -131,11 +131,11 @@ import javax.swing.JTextArea;
 
 public class courseDetailsPage extends JFrame {
     private OsgoodeLawSchool osgoode;
-    private JComboBox<String> degreeComboBox;
-    private JTextArea degreeInfoTextArea;
-    private JButton viewCoursesButton;
+    public JComboBox<String> degreeComboBox;
+    public JTextArea degreeInfoTextArea;
+    public JButton viewCoursesButton;
     private JButton backButton;
-    private JPanel coursePanel;
+    public JPanel coursePanel;
     private JLabel courseDescriptionLabel;
     private JTextArea courseInfoTextArea;
     private JLabel lblNewLabel;
@@ -321,4 +321,3 @@ public class courseDetailsPage extends JFrame {
 }
 
        
-
