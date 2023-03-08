@@ -1,28 +1,56 @@
 LOG ITR 2 
 
-=======================================================================
-Hena 
-=======================================================================
---> Worked on Business Logic for Program Pathway
---> Worked on GUI Page for courseDetailPage (Added logic and UI)
---> Worked on UI Navigation (from mainMenuPage to other pages)
---> Worked on JUINT tests for Program Pathway logic
---> Worked on JUINT tests for courseDetailPage
---> Created table degreesOffered and populated it with data
---> Made additions to table courseDetails and populated it with data
---> Created methods for retrieving data from degreesOffered (!TO DO)
+============================================================================      ==================      ==================
+ Hena                                                                               Time Allocated            Time Spent
+============================================================================      ==================      ==================
+Development task Assigned: Program Pathway & courseDetailPage implementation
+--> Worked on Business Logic for Program Pathway                                       7 days                  1.5 days
+--> Worked on GUI Page for courseDetailPage (Added logic and UI)                         |                      4 days
+--> Worked on UI Navigation (from mainMenuPage to other pages)                           |                      0.5 day
+--> Worked on JUINT tests for Program Pathway logic                                      |                      20 mins
+--> Worked on JUINT tests for courseDetailPage                                           ↓                      50 mins
+--> Guest function to mainMenuPage added                                                N/A                     5 mins
+--> Created table degreesOffered and populated it with data                            1 day                    1 hour
+--> Made additions to table courseDetails and populated it with data                   1 day                    3 hours
+--> Created methods for retrieving data from degreesOffered (!TO DO)                     ?                         ?
 
-=======================================================================
-Daoud 
-=======================================================================
+===========================================================================      ==================      ==================
+ Daoud                                                                             Time Allocated            Time Spent
+===========================================================================      ==================      ==================
+Development task Assigned: Database setup implementation
 --> 
 
-=======================================================================
-Haisam 
-=======================================================================
+===========================================================================      ==================      ==================
+ Haisam                                                                            Time Allocated            Time Spent
+===========================================================================      ==================      ==================
+Development task Assigned: courseLookup implementation
 -->  
 
-=======================================================================
-Julianna
-=======================================================================
+===========================================================================      ==================      ==================
+ Julianna                                                                          Time Allocated            Time Spent
+===========================================================================      ==================      ==================
+Development task Assigned: DegreeReq implementation
 --> 
+
+
+============================================================================================================================
+Meeting Notes/Changes on plan and big design decisions
+============================================================================================================================
+Hena:
+-->  Changes to display size of GUI page for courseDetailPage because font was small to see and was getting cut off.
+-->  Instead of having the degreePanel and courseInfoScrollPane side by side, vertically splitting it into a pane in
+     the center of the GUI.
+-->  Having buttons for each courses to click to display information then a combo box (visually better)
+-->  For iteration 3, change "View Courses" button to combo box with options "First Year", "Second Year", and "Upper Year"
+     to show courses for that year.
+-->  Instead of degreeOffered table having foreign key courseID, make degreeName a foreign key to table courseDetails
+     because its more easier to retrieve the courses for that degree if the degree name is matched then to store a list 
+     of courses for that degree in degreeOffered table.
+     
+--> 
+--> 
+--> 
+--> 
+--> 
+--> 
+
