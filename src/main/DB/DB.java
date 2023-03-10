@@ -7,6 +7,7 @@ import java.util.List;
 
 import main.DB.util.objects.courseObject;
 import main.DB.util.objects.facultyObject;
+import main.DB.util.objects.programObject;
 import main.DB.util.objects.userObject;
 import main.DB.util.connectToDB;
 import main.DB.util.utility;
@@ -252,25 +253,53 @@ public class DB implements DBInterface {
     // ============================================================================================================================================================================
 
     public Boolean createFaculty() {
-        // TODO Auto-generated method stub
+    	
         return null;
 
     }
 
     public facultyObject getFaculty() {
-        // TODO Auto-generated method stub
+    	
         return null;
 
     }
 
     public Boolean updateFaculty() {
-        // TODO Auto-generated method stub
+    	
         return null;
 
     }
 
     public Boolean deleteFaculty() {
-        // TODO Auto-generated method stub
+        
+        return null;
+
+    }
+
+    // ============================================================================================================================================================================
+    // PROGRAMS METHODS
+    // ============================================================================================================================================================================
+
+    public Boolean createProgram() {
+        
+        return null;
+
+    }
+
+    public programObject getPrograms() {
+        
+        return null;
+
+    }
+
+    public Boolean updateProgram() {
+        
+        return null;
+
+    }
+
+    public Boolean deleteProgram() {
+        
         return null;
 
     }
@@ -280,24 +309,25 @@ public class DB implements DBInterface {
     // ============================================================================================================================================================================
 
     public Boolean createDegreeChecklist() {
-        // TODO Auto-generated method stub
+        
         return null;
 
     }
 
     public Boolean getDegreeChecklist() {
-        // TODO Auto-generated method stub
+       
         return null;
 
     }
 
     public Boolean updateDegreeChecklist() {
-        // TODO Auto-generated method stub
+       
         return null;
 
     }
 
     public Boolean deleteDegreeChecklist() {
+    	
         return null;
     }
 
