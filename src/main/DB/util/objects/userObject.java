@@ -1,10 +1,11 @@
-package main.DB.util;
+package main.DB.util.objects;
 
-public class UserObject {
+public class userObject {
+
     String username;
     String password;
 
-    public UserObject(String username, String password) {
+    public userObject(String username, String password) {
         this.username = username;
         this.password = password;
     }

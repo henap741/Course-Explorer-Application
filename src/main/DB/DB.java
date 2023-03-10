@@ -5,55 +5,55 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import main.DB.util.UserObject;
+import main.DB.util.objects.courseObject;
+import main.DB.util.objects.facultyObject;
+import main.DB.util.objects.userObject;
 import main.DB.util.connectToDB;
+import main.DB.util.utility;
 
 public class DB implements DBInterface {
     connectToDB DB = new connectToDB();
-    ArrayList<UserObject> usersMockArray;
-    // Executable Block to Mock Data
-    {
-        ArrayList<UserObject> usersMockArr = new ArrayList<UserObject>();
-        UserObject mockUser1 = new UserObject("steve", "123");
-        usersMockArr.add(mockUser1);
-        usersMockArray = usersMockArr;
+    utility localUtils = new utility();
+
+    // ============================================================================================================================================================================
+    // USER METHODS
+    // ============================================================================================================================================================================
+
+    public Boolean createUser() {
+
+        return false;
     }
 
-    @Override
-    public String[] createUser() {
-        // TODO Auto-generated method stub
-        System.out.println(usersMockArray);
+    public userObject readUser() {
 
-        String[] success = { "success" };
-        return success;
+        return null;
     }
 
-    @Override
-    public String[] readUser() {
-        // TODO Auto-generated method stub
+    public Boolean deleteUser() {
 
-        String[] success = { "success" };
-        return success;
+        return null;
     }
+
+    // ============================================================================================================================================================================
+    // COURSES METHODS
+    // ============================================================================================================================================================================
 
     // Parameters must be passed in correct order
-    public String[] createCourseInfo(String courseID, String courseName, String courseDesc, String courseTerm,
+
+    public Boolean createCourse(String courseID, String courseName, String courseDesc, String courseTerm,
             String courseSection,
             String courseCatNum, String courseInstructor, String courseStartTime, String courseDuration,
-            String courseNotes, String courseSectionDirector, String courseCredits, String courseYear, String coursePrerequisites, String degreeName) {
+            String courseNotes, String courseSectionDirector, String courseCredits, String courseYear,
+            String coursePrerequisites, String degreeName) {
 
         // Check if any parameters are empty or invalid
-        // If optional parameters are empty or null, set to empty string ""
-        if (!checkEmptyOrNullString(new String[] { courseNotes, courseSectionDirector }, courseID, courseName,
-                courseDesc,
-                courseTerm, courseSection, courseCatNum, courseInstructor,
-                courseStartTime, courseDuration, courseCredits, courseYear, coursePrerequisites, degreeName)) {
-            String[] failedResult = { "failure", "Required parameters were empty or null" };
-            return failedResult;
+        if (!localUtils.checkEmptyOrNullString(courseID, courseName)) {
+            System.out.println("Required parameters to createCourse were empty or null ( createCourse() - DB.java )");
+            return false;
         }
 
         try {
-            String SQL = "INSERT INTO courseDetails(courseID,courseName,courseDesc,courseTerm,courseSection,courseCatNum,courseInstructor,courseStartTime,courseDuration,courseNotes,courseSectionDirector,courseCredits) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
+            String SQL = "INSERT INTO courseDetails(courseID,courseName,courseDesc,courseTerm,courseSection,courseCatNum,courseInstructor,courseStartTime,courseDuration,courseNotes,courseSectionDirector,courseCredits,courseYear,coursePrerequisites,degreeName) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             Connection DBConnection = DB.getConnection();
             PreparedStatement pstmt = DBConnection.prepareStatement(SQL);
             pstmt.setString(1, courseID);
@@ -72,27 +72,25 @@ public class DB implements DBInterface {
             pstmt.setString(14, coursePrerequisites);
             pstmt.setString(15, degreeName);
 
-            pstmt.executeUpdate();
-
+            int rowsUpdated = pstmt.executeUpdate();
+            System.out.println("Rows updated: " + rowsUpdated);
             DBConnection.close();
 
         } catch (Exception e) {
 
             System.out.println(e);
-            String[] failure = { "failure" };
-            return failure;
+            return false;
         }
 
-        String[] success = { "success" };
-        return success;
+        return true;
 
     }
 
-    public String[] readCourseInfo(String courseID) {
+    public courseObject getCourse(String courseID) {
 
-        if (!checkEmptyOrNullString(new String[] {}, courseID)) {
-            String[] failedResult = { "failure", "Required courseID was empty or null" };
-            return failedResult;
+        if (!localUtils.checkEmptyOrNullString(courseID)) {
+            System.out.println("Empty courseID provided to getCourse (DB.java)");
+            return null;
         }
 
         try {
@@ -101,99 +99,206 @@ public class DB implements DBInterface {
             PreparedStatement pstmt = DBConnection.prepareStatement(SQL);
             pstmt.setString(1, courseID);
             ResultSet rs = pstmt.executeQuery();
-            ResultSetMetaData metaData = rs.getMetaData();
-            int numberColumns = metaData.getColumnCount();
 
-            List<String> allResults = new ArrayList<>();
-
+            // Initialize courseObj properties
+            String ID = "", name = "", description = "", term = "", section = "",
+                    catNum = "", instructor = "", startTime = "", duration = "", notes = "", sectionDirector = "",
+                    credits = "", year = "",
+                    prerequisites = "",
+                    degreeName = "";
             while (rs.next()) {
-                String[] currentRow = new String[numberColumns];
-                for (int i = 1; i <= numberColumns; i++) {
-                    currentRow[i - 1] = rs.getString(i);
-                }
-                allResults.add(Arrays.toString(currentRow));
+                ID = rs.getString("courseID");
+                name = rs.getString("courseName");
+                description = rs.getString("courseDesc");
+                term = rs.getString("courseTerm");
+                section = rs.getString("courseSection");
+                catNum = rs.getString("courseCatNum");
+                instructor = rs.getString("courseInstructor");
+                startTime = rs.getString("courseStartTime");
+                duration = rs.getString("courseDuration");
+                notes = rs.getString("courseNotes");
+                sectionDirector = rs.getString("courseSectionDirector");
+                credits = rs.getString("courseCredits");
+                year = rs.getString("courseYear");
+                prerequisites = rs.getString("coursePrerequisites");
+                degreeName = rs.getString("degreeName");
             }
 
             DBConnection.close();
-            String[] returnStringArray = allResults.toArray(new String[0]);
-            System.out.print(returnStringArray);
-            return returnStringArray;
+            courseObject returnObj = new courseObject(ID, name, description, term, section, catNum, instructor,
+                    startTime, duration, notes, sectionDirector, credits, year, prerequisites, degreeName);
+            return returnObj;
 
         } catch (Exception e) {
             System.out.println(e);
+            return null;
         }
 
-        String[] success = { "success", };
-        return success;
     }
 
-    @Override
-    public String[] updateCourseInfo() {
-        // TODO Auto-generated method stub
-        String[] success = { "success" };
-        return success;
-    }
+    public Boolean updateCourse(String courseID, String courseName, String courseDesc, String courseTerm,
+            String courseSection,
+            String courseCatNum, String courseInstructor, String courseStartTime, String courseDuration,
+            String courseNotes, String courseSectionDirector, String courseCredits, String courseYear,
+            String coursePrerequisites, String degreeName) {
 
-    @Override
-    public void createFacultyInfo() {
-        // TODO Auto-generated method stub
+        if (!localUtils.checkEmptyOrNullString(courseID)) {
+            System.out.println("CourseID not provided for update - ( updateCourse() - DB.java ) \n");
+            return false;
+        }
 
-    }
+        // Create SQL Update String
+        String sql = "UPDATE courseDetails SET ";
+        List<String> setClauses = new ArrayList<>();
 
-    @Override
-    public void readFacultyInfo() {
-        // TODO Auto-generated method stub
+        if (courseName != null) {
+            setClauses.add("courseName='" + courseName + "'");
+        }
+        if (courseDesc != null) {
+            setClauses.add("courseDesc='" + courseDesc + "'");
+        }
+        if (courseTerm != null) {
+            setClauses.add("courseTerm='" + courseTerm + "'");
+        }
+        if (courseSection != null) {
+            setClauses.add("courseSection='" + courseSection + "'");
+        }
+        if (courseCatNum != null) {
+            setClauses.add("courseCatNum='" + courseCatNum + "'");
+        }
+        if (courseInstructor != null) {
+            setClauses.add("courseInstructor='" + courseInstructor + "'");
+        }
+        if (courseStartTime != null) {
+            setClauses.add("courseStartTime='" + courseStartTime + "'");
+        }
+        if (courseDuration != null) {
+            setClauses.add("courseDuration='" + courseDuration + "'");
+        }
+        if (courseNotes != null) {
+            setClauses.add("courseNotes='" + courseNotes + "'");
+        }
+        if (courseSectionDirector != null) {
+            setClauses.add("courseSectionDirector='" + courseSectionDirector + "'");
+        }
+        if (courseCredits != null) {
+            setClauses.add("courseCredits='" + courseCredits + "'");
+        }
+        if (courseYear != null) {
+            setClauses.add("courseYear='" + courseYear + "'");
+        }
 
-    }
+        if (coursePrerequisites != null) {
+            setClauses.add("coursePrerequisites='" + coursePrerequisites + "'");
+        }
 
-    @Override
-    public void updateFacultyInfo() {
-        // TODO Auto-generated method stub
+        if (degreeName != null) {
+            setClauses.add("degreeName='" + degreeName + "'");
+        }
+        if (setClauses.isEmpty()) {
+            System.out.println("Nothing to update - (updateCourses() - DB.java)");
+            return false;
+        }
+        sql += String.join(",", setClauses);
+        sql += " WHERE courseID='" + courseID + "'";
 
-    }
+        // Execute the SQL update statement
+        try {
+            Connection DBConnection = DB.getConnection();
+            PreparedStatement pstmt = DBConnection.prepareStatement(sql);
+            int updatedRows = pstmt.executeUpdate();
+            System.out.println("Updated " + updatedRows + " items successfully \n");
 
-    @Override
-    public void createDegreeReq() {
-        // TODO Auto-generated method stub
-
-    }
-
-    @Override
-    public void readDegreeReq() {
-        // TODO Auto-generated method stub
-
-    }
-
-    @Override
-    public void updateDegreeReq() {
-        // TODO Auto-generated method stub
-
-    }
-
-    @Override
-    public String[] createCourseInfo() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'createCourseInfo'");
-    }
-
-    @Override
-    public String[] readCourseInfo() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'readCourseInfo'");
-    }
-
-    public Boolean checkEmptyOrNullString(String[] optionalArgs, String... args) {
-        for (String arg : args) {
-            if (arg == null || arg.isEmpty()) {
-                return false;
+            if (updatedRows > 0) {
+                return true;
             }
+
+        } catch (Exception e) {
+            System.out.println("Error updating course - ( updateCourse() - DB.java ) \n");
+            System.out.println(e);
         }
-        for (String arg : optionalArgs) {
-            if (arg == null || arg.isEmpty()) {
-                arg = "";
+
+        return null;
+    }
+
+    public Boolean deleteCourse(String courseID) {
+
+        if (!localUtils.checkEmptyOrNullString(courseID)) {
+            System.out.println("CourseID not provided for update - ( deleteCourse() - DB.java ) \n");
+            return false;
+        }
+        String SQL = "DELETE FROM courseDetails WHERE courseID='" + courseID + "'";
+        try {
+            Connection DBConnection = DB.getConnection();
+            PreparedStatement pstmt = DBConnection.prepareStatement(SQL);
+            int deletedRows = pstmt.executeUpdate();
+            System.out.println("Deleted " + deletedRows + " items successfully \n");
+
+            if (deletedRows > 0) {
+                return true;
             }
+
+        } catch (Exception e) {
+            System.out.println("Error deleting course - ( deleteCourse() - DB.java ) \n");
+            System.out.println(e);
+            return false;
         }
-        return true;
+
+        return null;
+    }
+
+    // ============================================================================================================================================================================
+    // FACULTY METHODS
+    // ============================================================================================================================================================================
+
+    public Boolean createFaculty() {
+        // TODO Auto-generated method stub
+        return null;
+
+    }
+
+    public facultyObject getFaculty() {
+        // TODO Auto-generated method stub
+        return null;
+
+    }
+
+    public Boolean updateFaculty() {
+        // TODO Auto-generated method stub
+        return null;
+
+    }
+
+    public Boolean deleteFaculty() {
+        // TODO Auto-generated method stub
+        return null;
+
+    }
+
+    // ============================================================================================================================================================================
+    // DEGREE CHECKLIST METHODS
+    // ============================================================================================================================================================================
+
+    public Boolean createDegreeChecklist() {
+        // TODO Auto-generated method stub
+        return null;
+
+    }
+
+    public Boolean getDegreeChecklist() {
+        // TODO Auto-generated method stub
+        return null;
+
+    }
+
+    public Boolean updateDegreeChecklist() {
+        // TODO Auto-generated method stub
+        return null;
+
+    }
+
+    public Boolean deleteDegreeChecklist() {
+        return null;
     }
 
 }
