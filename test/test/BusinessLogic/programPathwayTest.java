@@ -26,8 +26,8 @@ class programPathwayTest {
         
         // create a list of required courses
         ArrayList<courses> requiredCourses = new ArrayList<courses>();
-        courses course1 = new courses("CSCI101", "Introduction to Computer Science", "First Year", "4", "Winter", null, requiredCourses, null);
-        courses course2 = new courses("CSCI201", "Data Structures and Algorithms", "First Year", "3", "Fall", null, requiredCourses, null);
+        courses course1 = new courses("CSCI101", "Introduction to Computer Science", "First Year", "4", "Winter", "3 hours", null, requiredCourses, null);
+        courses course2 = new courses("CSCI201", "Data Structures and Algorithms", "First Year", "3", "Fall", "3 hours", null, requiredCourses, null);
         requiredCourses.add(course1);
         requiredCourses.add(course2);
 
@@ -51,8 +51,8 @@ class programPathwayTest {
     @Test
     public void testPathwayCalculator() {
         ArrayList<courses> coursesList = new ArrayList<>();
-        coursesList.add(new courses("Course 1", "Course Name 1", "First Year", "4", "Winter", null, coursesList, null));
-        coursesList.add(new courses("Course 2", "Course Name 2", "Second Year", "4", "Fall", null, coursesList, null));
+        coursesList.add(new courses("Course 1", "Course Name 1", "First Year", "4", "Winter", "3 hours", null, coursesList, null));
+        coursesList.add(new courses("Course 2", "Course Name 2", "Second Year", "4", "Fall", "2 hours", null, coursesList, null));
         pathwayCalculator calculator = new pathwayCalculator("Program Name", "Program Duration", "Program Description", "Requried Credits", coursesList);
         assertNotNull(calculator);
         assertEquals("Program Name", calculator.getProgramName());
@@ -67,6 +67,7 @@ class programPathwayTest {
         assertEquals("Course Name 1", course1.getCourseName());
         assertEquals("First Year", course1.getCourseYear());
         assertEquals("4", course1.getCourseCredits());
+        assertEquals("3 hours", course1.getCourseDuration());
         assertEquals("Winter", course1.getCourseTerm());
         assertEquals(2, course1.getPrerequisites().size());
 
@@ -75,6 +76,7 @@ class programPathwayTest {
         assertEquals("Course Name 2", course2.getCourseName());
         assertEquals("Second Year", course2.getCourseYear());
         assertEquals("4", course2.getCourseCredits());
+        assertEquals("2 hours", course2.getCourseDuration());
         assertEquals("Fall", course2.getCourseTerm());
         assertEquals(2, course2.getPrerequisites().size());
     }

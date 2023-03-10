@@ -9,15 +9,17 @@ public class courses {
 	    private String courseCredits;
 	    private String courseTerm;
 	    private String courseDescription;
+	    private String courseDuration;
 	    private ArrayList<courses> prerequisites;
 	    private String instructor;
 
-	    public courses(String courseCode, String courseName, String courseYear, String courseCredits, String courseTerm, String courseDescription, ArrayList<courses> prerequisites, String instructor) {
+	    public courses(String courseCode, String courseName, String courseYear, String courseCredits, String courseTerm, String courseDuration, String courseDescription, ArrayList<courses> prerequisites, String instructor) {
 	        this.courseCode = courseCode;
 	        this.courseName = courseName;
 	        this.courseYear = courseYear;
 	        this.courseCredits = courseCredits;
 	        this.courseTerm = courseTerm;
+	        this.courseDuration = courseDuration;
 	        this.courseDescription = courseDescription;
 	        this.prerequisites = prerequisites;
 	        this.instructor = instructor;
@@ -39,6 +41,10 @@ public class courses {
 	        return courseDescription;
 	    }
 
+	    public String getCourseDuration() {
+	    	return courseDuration;
+	    }
+	    
 	    public String getCourseCredits() {
 	        return courseCredits;
 	    }
