@@ -23,7 +23,7 @@ class coursesTest {
 				+ "utilizing all the skills they have acquired so far. This includes requirement elicitation, system specification, implementation,"
 				+ " testing, deployment, and user documentation.", "W", "Z", "G82E02", "Hadi Hemmati", "11:30", "120", "$5.00 - Course Materials", 
 				"Hadi Hemmati", "3", "2023", "Prerequisites: cumulative GPA of 4.50 or better over all major EECS courses (without second digit \"5\"); "
-						+ "LE/EECS 1030 3.00 or LE/EECS 2030 3.00.", "Software Engineering");
+						+ "LE/EECS 1030 3.00 or LE/EECS 2030 3.00", "Software Engineering");
 	}
 	
 	@Test
