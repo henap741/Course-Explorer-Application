@@ -100,5 +100,9 @@ public class loginScreenPage extends JFrame {
 		sign_up_button.setFont(new Font("Times New Roman", Font.BOLD, 12));
 		sign_up_button.setBounds(228, 215, 91, 23);
 		contentPane.add(sign_up_button);
+		
+		JLabel lblNewLabel = new JLabel("Use Guest option for entry");
+		lblNewLabel.setBounds(147, 190, 154, 14);
+		contentPane.add(lblNewLabel);
 	}
 }
