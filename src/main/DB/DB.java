@@ -20,18 +20,80 @@ public class DB implements DBInterface {
     // USER METHODS
     // ============================================================================================================================================================================
 
-    public Boolean createUser() {
+    public Boolean createUser(String username, String password, String userChecklistRef, String userProgramRef,
+            String[] coursesArray) {
 
-        return false;
+        if (!localUtils.checkEmptyOrNullString(username, password)) {
+            System.out.println("Required parameters to createUser were empty or null ( createUser() - DB.java )");
+            return false;
+        }
+
+        try {
+            String SQL = "INSERT INTO userData(userID,password,userCoursesArr,userChecklistRef,userProgramRef) VALUES(?,?,?,?,?)";
+            Connection DBConnection = DB.getConnection();
+            PreparedStatement pstmt = DBConnection.prepareStatement(SQL);
+            pstmt.setString(1, username);
+            pstmt.setString(2, password);
+            pstmt.setString(3, Arrays.toString(coursesArray));
+            pstmt.setString(4, userChecklistRef);
+            pstmt.setString(5, userProgramRef);
+
+            int rowsUpdated = pstmt.executeUpdate();
+            System.out.println("Rows updated: " + rowsUpdated);
+            DBConnection.close();
+
+            if (rowsUpdated > 0) {
+                return true;
+            }
+
+        } catch (Exception e) {
+            System.out.println("Error creating user - ( createUser() - DB.java ) \n");
+            System.out.println(e);
+        }
+        return null;
     }
 
-    public userObject readUser() {
+    public userObject getUser(String userID) {
+        if (!localUtils.checkEmptyOrNullString(userID)) {
+            System.out.println("Required parameters to getUser were empty or null ( getUser() - DB.java )");
+            return null;
+        }
+
+        try {
+            String SQL = "SELECT * FROM userData WHERE userID = ?";
+            Connection DBConnection = DB.getConnection();
+            PreparedStatement pstmt = DBConnection.prepareStatement(SQL);
+            pstmt.setString(1, userID);
+            ResultSet rs = pstmt.executeQuery();
+
+            // Initialize courseObj properties
+            String ID = "", password = "", userChecklistRef = "", userProgramRef = "", userCoursesArrString = "";
+
+            while (rs.next()) {
+                ID = rs.getString("userID");
+                password = rs.getString("password");
+                userChecklistRef = rs.getString("userChecklistRef");
+                userProgramRef = rs.getString("userProgramRef");
+                userCoursesArrString = rs.getString("userCoursesArrString");
+            }
+
+            // Convert Array stored as String to Array
+            String[] userCourses = userCoursesArrString.substring(1, userCoursesArrString.length() - 1).split(", ");
+
+            DBConnection.close();
+            userObject returnObj = new userObject(ID, password, userChecklistRef, userProgramRef, userCourses);
+            return returnObj;
+
+        } catch (Exception e) {
+            System.out.println("Error getting user - ( getUser() - DB.java ) \n");
+            System.out.println(e);
+        }
 
         return null;
     }
 
     public Boolean deleteUser() {
-
+        System.out.println("deleteUser() - DB.java is not yet implemented");
         return null;
     }
 
@@ -77,13 +139,17 @@ public class DB implements DBInterface {
             System.out.println("Rows updated: " + rowsUpdated);
             DBConnection.close();
 
-        } catch (Exception e) {
+            if (rowsUpdated > 0) {
+                return true;
+            }
 
+        } catch (Exception e) {
+            System.out.println("Error inserting course - ( createCourse() - DB.java ) \n");
             System.out.println(e);
             return false;
         }
 
-        return true;
+        return null;
 
     }
 
@@ -131,6 +197,7 @@ public class DB implements DBInterface {
             return returnObj;
 
         } catch (Exception e) {
+            System.out.println("Error retrieving course - ( getCourse() - DB.java ) \n");
             System.out.println(e);
             return null;
         }
@@ -209,6 +276,7 @@ public class DB implements DBInterface {
             PreparedStatement pstmt = DBConnection.prepareStatement(sql);
             int updatedRows = pstmt.executeUpdate();
             System.out.println("Updated " + updatedRows + " items successfully \n");
+            DBConnection.close();
 
             if (updatedRows > 0) {
                 return true;
@@ -234,6 +302,7 @@ public class DB implements DBInterface {
             PreparedStatement pstmt = DBConnection.prepareStatement(SQL);
             int deletedRows = pstmt.executeUpdate();
             System.out.println("Deleted " + deletedRows + " items successfully \n");
+            DBConnection.close();
 
             if (deletedRows > 0) {
                 return true;
@@ -252,54 +321,155 @@ public class DB implements DBInterface {
     // FACULTY METHODS
     // ============================================================================================================================================================================
 
-    public Boolean createFaculty() {
-    	
+    public Boolean createFaculty(String ID, String type, String name, String email, String additionalInfo) {
+        // Check if any parameters are empty or invalid
+        if (!localUtils.checkEmptyOrNullString(ID)) {
+            System.out
+                    .println("Required parameters to create faculty were empty or null ( createFaculty() - DB.java )");
+            return false;
+        }
+
+        try {
+            String SQL = "INSERT INTO facultyDetails(facultyID,facultyType,facultyName,facultyEmail,facultyAdditionalInfo) VALUES(?,?,?,?,?)";
+            Connection DBConnection = DB.getConnection();
+            PreparedStatement pstmt = DBConnection.prepareStatement(SQL);
+            pstmt.setString(1, ID);
+            pstmt.setString(2, type);
+            pstmt.setString(3, name);
+            pstmt.setString(4, email);
+            pstmt.setString(5, additionalInfo);
+
+            int rowsUpdated = pstmt.executeUpdate();
+            System.out.println("Rows updated: " + rowsUpdated);
+            DBConnection.close();
+
+            if (rowsUpdated > 0) {
+                return true;
+            }
+
+        } catch (Exception e) {
+            System.out.println("Error inserting faculty - ( createFaculty() - DB.java ) \n");
+            System.out.println(e);
+            return false;
+        }
+
         return null;
 
     }
 
-    public facultyObject getFaculty() {
-    	
+    public facultyObject getFaculty(String facultyID) {
+
+        if (!localUtils.checkEmptyOrNullString(facultyID)) {
+            System.out.println("Empty facultyID provided to getFaculty (DB.java)");
+            return null;
+        }
+
+        try {
+            String SQL = "SELECT * FROM facultyDetails WHERE facultyID = ?";
+            Connection DBConnection = DB.getConnection();
+            PreparedStatement pstmt = DBConnection.prepareStatement(SQL);
+            pstmt.setString(1, facultyID);
+            ResultSet rs = pstmt.executeQuery();
+
+            // Initialize courseObj properties
+            String ID = "", type = "", name = "", email = "", additionalInfo = "";
+            while (rs.next()) {
+                ID = rs.getString("facultyID");
+                type = rs.getString("facultyType");
+                name = rs.getString("facultyName");
+                email = rs.getString("facultyEmail");
+                additionalInfo = rs.getString("facultyAdditionalInfo");
+            }
+
+            DBConnection.close();
+
+            facultyObject returnObj = new facultyObject(ID, type, name, email, additionalInfo);
+            return returnObj;
+
+        } catch (Exception e) {
+            System.out.println("Error retrieving course - ( getCourse() - DB.java ) \n");
+            System.out.println(e);
+            return null;
+        }
+
+    }
+
+    public Boolean updateFaculty(String ID, String type, String name, String email, String additionalInfo) {
+
+        if (!localUtils.checkEmptyOrNullString(ID)) {
+            System.out.println("ID not provided for update - ( updateFaculty() - DB.java ) \n");
+            return false;
+        }
+
+        // Create SQL Update String
+        String sql = "UPDATE courseDetails SET ";
+        List<String> setClauses = new ArrayList<>();
+
+        if (type != null) {
+            setClauses.add("facultyType='" + type + "'");
+        }
+        if (name != null) {
+            setClauses.add("facultyName='" + name + "'");
+        }
+        if (email != null) {
+            setClauses.add("facultyEmail='" + email + "'");
+        }
+        if (additionalInfo != null) {
+            setClauses.add("facultyAdditionalInfo='" + additionalInfo + "'");
+        }
+
+        if (setClauses.isEmpty()) {
+            System.out.println("Nothing to update - ( updateFaculty() - DB.java)");
+            return false;
+        }
+        sql += String.join(",", setClauses);
+        sql += " WHERE facultyID='" + ID + "'";
+
+        // Execute the SQL update statement
+        try {
+            Connection DBConnection = DB.getConnection();
+            PreparedStatement pstmt = DBConnection.prepareStatement(sql);
+            int updatedRows = pstmt.executeUpdate();
+            System.out.println("Updated " + updatedRows + " items successfully \n");
+            DBConnection.close();
+
+            if (updatedRows > 0) {
+                return true;
+            }
+
+        } catch (Exception e) {
+            System.out.println("Error updating faculty - ( updateFaculty() - DB.java ) \n");
+            System.out.println(e);
+        }
+
         return null;
 
     }
 
-    public Boolean updateFaculty() {
-    	
-        return null;
+    public Boolean deleteFaculty(String facultyID) {
 
-    }
+        if (!localUtils.checkEmptyOrNullString(facultyID)) {
+            System.out.println("facultyID not provided for deletion - ( deleteFaculty() - DB.java ) \n");
+            return false;
+        }
+        String SQL = "DELETE FROM facultyDetails WHERE facultyID='" + facultyID + "'";
+        try {
+            Connection DBConnection = DB.getConnection();
+            PreparedStatement pstmt = DBConnection.prepareStatement(SQL);
+            int deletedRows = pstmt.executeUpdate();
+            System.out.println("Deleted " + deletedRows + " items successfully \n");
+            DBConnection.close();
 
-    public Boolean deleteFaculty() {
-        
-        return null;
+            if (deletedRows > 0) {
+                return true;
+            }
 
-    }
+        } catch (Exception e) {
+            System.out.println("Error deleting faculty - ( deleteFaculty() - DB.java ) \n");
+            System.out.println(e);
+            return false;
+        }
 
-    // ============================================================================================================================================================================
-    // PROGRAMS METHODS
-    // ============================================================================================================================================================================
-
-    public Boolean createProgram() {
-        
-        return null;
-
-    }
-
-    public programObject getPrograms() {
-        
-        return null;
-
-    }
-
-    public Boolean updateProgram() {
-        
-        return null;
-
-    }
-
-    public Boolean deleteProgram() {
-        
         return null;
 
     }
