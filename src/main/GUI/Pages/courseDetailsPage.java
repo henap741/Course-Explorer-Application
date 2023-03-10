@@ -225,7 +225,7 @@ public class courseDetailsPage extends JFrame {
         topPanel.add(title, BorderLayout.NORTH);
         mainPanel.add(splitPane, BorderLayout.CENTER);
         //mainPanel.add(degreePanel, BorderLayout.WEST);
-        mainPanel.add(coursePanel, BorderLayout.SOUTH);
+        mainPanel.add(coursePanel, BorderLayout.EAST);
         //mainPanel.add(courseInfoScrollPane, BorderLayout.CENTER);
         
         lblNewLabel = new JLabel("Course Description:");
