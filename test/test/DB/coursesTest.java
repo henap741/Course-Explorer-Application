@@ -13,7 +13,7 @@ import main.DB.util.objects.courseObject;
 // ============================================================================================================================================================================
 
 class coursesTest {
-	DB db;
+	DB db = new DB();
 	boolean result;
 	courseObject cobj;
 	
