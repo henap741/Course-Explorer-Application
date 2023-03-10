@@ -7,6 +7,7 @@ import java.util.List;
 
 import main.DB.util.objects.courseObject;
 import main.DB.util.objects.facultyObject;
+import main.DB.util.objects.programObject;
 import main.DB.util.objects.userObject;
 import main.DB.util.connectToDB;
 import main.DB.util.utility;
@@ -478,24 +479,25 @@ public class DB implements DBInterface {
     // ============================================================================================================================================================================
 
     public Boolean createDegreeChecklist() {
-        // TODO Auto-generated method stub
+        
         return null;
 
     }
 
     public Boolean getDegreeChecklist() {
-        // TODO Auto-generated method stub
+       
         return null;
 
     }
 
     public Boolean updateDegreeChecklist() {
-        // TODO Auto-generated method stub
+       
         return null;
 
     }
 
     public Boolean deleteDegreeChecklist() {
+    	
         return null;
     }
 
