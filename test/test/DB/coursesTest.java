@@ -60,7 +60,7 @@ class coursesTest {
 	// Checks if updated information is correct
 	void updateCourseTest2() {
 		cobj = db.getCourse("2311");
-		assertEquals(cobj.getTerm(), "F", "Course parameter was not succesfully updated");
+		assertEquals(cobj.getTerm(), "F", "Course parameter does not match input");
 	}
 	
 	@Test
