@@ -37,9 +37,7 @@ public class connectToDB {
             // String courseDuration = "fakeDuration";
             // String courseCredits = "fakeCredits";
 
-            Boolean result = DBInstance.createUser("fakeg2uy21", "fakepass", "fakeCheckl2i2stRef1",
-                    "fakeyuserProgramRef",
-                    new String[] { "meow", "meow2" });
+            Boolean result = DBInstance.deleteCourse(courseID);
 
             System.out.println(result);
         } catch (Exception e) {
