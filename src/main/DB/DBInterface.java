@@ -6,12 +6,13 @@ import main.DB.util.objects.userObject;
 
 public interface DBInterface {
     // Return TRUE or FALSE for CREATE, UPDATE, DELETE
-    // Return Object for get Methods
+    // Return Object for READ Methods
 
     // Login/Signup Methods
-    public Boolean createUser();
+    public Boolean createUser(String username, String password, String userChecklistRef, String userProgramRef,
+            String[] coursesArray);
 
-    public userObject readUser();
+    public userObject getUser(String userID);
 
     public Boolean deleteUser();
 
@@ -33,13 +34,13 @@ public interface DBInterface {
     public Boolean deleteCourse(String courseID);
 
     // Faculty/Staff Methods
-    public Boolean createFaculty();
+    public Boolean createFaculty(String ID, String type, String name, String email, String additionalInfo);
 
-    public facultyObject getFaculty();
+    public facultyObject getFaculty(String facultyID);
 
-    public Boolean updateFaculty();
+    public Boolean updateFaculty(String ID, String type, String name, String email, String additionalInfo);
 
-    public Boolean deleteFaculty();
+    public Boolean deleteFaculty(String facultyID);
 
     // Degree Requirements Methods
     public Boolean createDegreeChecklist();
