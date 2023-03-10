@@ -45,4 +45,11 @@ public class degChecklistObject {
         this.toCompleteCourses = toCompleteCourses;
     }
 
+    public void printProperties() {
+        System.out.println("CheckList ID: " + this.ID);
+        System.out.println("userIDRef: " + this.userIDRef);
+        System.out.println("toCompleteCourses: " + Arrays.toString(this.toCompleteCourses));
+        System.out.println("completedCourses: " + Arrays.toString(this.completedCourses));
+    }
+
 }
