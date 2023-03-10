@@ -225,7 +225,7 @@ public class courseDetailsPage extends JFrame {
         topPanel.add(title, BorderLayout.NORTH);
         mainPanel.add(splitPane, BorderLayout.CENTER);
         //mainPanel.add(degreePanel, BorderLayout.WEST);
-        mainPanel.add(coursePanel, BorderLayout.SOUTH);
+        mainPanel.add(coursePanel, BorderLayout.EAST);
         //mainPanel.add(courseInfoScrollPane, BorderLayout.CENTER);
         
         lblNewLabel = new JLabel("Course Description:");
@@ -298,10 +298,12 @@ public class courseDetailsPage extends JFrame {
                 String courseName = selectedCourse.getCourseName();
                 String courseCredits = selectedCourse.getCourseCredits();
                 String courseTerm = selectedCourse.getCourseTerm();
+                String courseDuration = selectedCourse.getCourseDuration();
                 String courseDescription = selectedCourse.getCourseDescription();
                 String courseInstructor = selectedCourse.getInstructor();
                 courseInfoTextArea.setText("Course Name: " + courseName + "\n" +
                 							"Course Credits: " + courseCredits + "\n" +
+                							"Course Duration: " + courseDuration + "\n" +
                 							"Course Term: " + courseTerm + "\n" +
                                             "Course Professor: " + courseInstructor + "\n" +
                                             "Course Description: " + courseDescription);
