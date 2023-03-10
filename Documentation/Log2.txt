@@ -10,9 +10,10 @@ Development task Assigned: Program Pathway & courseDetailPage implementation
 --> Worked on JUINT tests for Program Pathway logic                                      |                      20 mins
 --> Worked on JUINT tests for courseDetailPage                                           ↓                      50 mins
 --> Guest function to mainMenuPage added                                                N/A                     5 mins
---> Created table degreesOffered and populated it with data                            1 day                    1 hour
+--> Created table programs and populated it with data                                  1 day                    1 hour
 --> Made additions to table courseDetails and populated it with data                   1 day                    3 hours
---> Created methods for retrieving data from degreesOffered (!TO DO)                     ?                         ?
+--> Created program methods in DB                                                      1 hour
+--> Created methods for retrieving data from programs (!TO DO)                           ?                         ?
 
 ===========================================================================      ==================      ==================
  Daoud                                                                             Time Allocated            Time Spent
