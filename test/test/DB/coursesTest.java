@@ -74,7 +74,7 @@ class coursesTest {
 	// Checks if deleted course still exists
 	void deleteCourseTest2() {
 		cobj = db.getCourse("2311");
-		assertNull(cobj, "Course deletion was unsuccessful");
+		assertNull(cobj, "Course deletion was unsuccessful, course still in the database");
 	}
 	
 
