@@ -9,7 +9,8 @@ public interface DBInterface {
     // Return Object for get Methods
 
     // Login/Signup Methods
-    public Boolean createUser();
+    public Boolean createUser(String username, String password, String userChecklistRef, String userProgramRef,
+            String[] coursesArray);
 
     public userObject readUser();
 

@@ -19,12 +19,74 @@ public class DB implements DBInterface {
     // USER METHODS
     // ============================================================================================================================================================================
 
-    public Boolean createUser() {
+    public Boolean createUser(String username, String password, String userChecklistRef, String userProgramRef,
+            String[] coursesArray) {
 
-        return false;
+        if (!localUtils.checkEmptyOrNullString(username, password)) {
+            System.out.println("Required parameters to createUser were empty or null ( createUser() - DB.java )");
+            return false;
+        }
+
+        try {
+            String SQL = "INSERT INTO userData(userID,password,userCoursesArr,userChecklistRef,userProgramRef) VALUES(?,?,?,?,?)";
+            Connection DBConnection = DB.getConnection();
+            PreparedStatement pstmt = DBConnection.prepareStatement(SQL);
+            pstmt.setString(1, username);
+            pstmt.setString(2, password);
+            pstmt.setString(3, Arrays.toString(coursesArray));
+            pstmt.setString(4, userChecklistRef);
+            pstmt.setString(5, userProgramRef);
+
+            int rowsUpdated = pstmt.executeUpdate();
+            System.out.println("Rows updated: " + rowsUpdated);
+            DBConnection.close();
+
+            if (rowsUpdated > 0) {
+                return true;
+            }
+
+        } catch (Exception e) {
+            System.out.println("Error creating user - ( createUser() - DB.java ) \n");
+            System.out.println(e);
+        }
+        return null;
     }
 
-    public userObject readUser() {
+    public userObject getUser(String userID) {
+        if (!localUtils.checkEmptyOrNullString(userID)) {
+            System.out.println("Required parameters to getUser were empty or null ( getUser() - DB.java )");
+            return null;
+        }
+
+        try {
+            String SQL = "SELECT * FROM userData WHERE userID = ?";
+            Connection DBConnection = DB.getConnection();
+            PreparedStatement pstmt = DBConnection.prepareStatement(SQL);
+            pstmt.setString(1, userID);
+            ResultSet rs = pstmt.executeQuery();
+
+            // Initialize courseObj properties
+            String ID = "", password = "", userChecklistRef = "", userProgramRef = "", userCoursesArrString = "";
+
+            while (rs.next()) {
+                ID = rs.getString("userID");
+                password = rs.getString("password");
+                userChecklistRef = rs.getString("userChecklistRef");
+                userProgramRef = rs.getString("userProgramRef");
+                userCoursesArrString = rs.getString("userCoursesArrString");
+            }
+
+            // Convert Array stored as String to Array
+            String[] userCourses = userCoursesArrString.substring(1, userCoursesArrString.length() - 1).split(", ");
+
+            DBConnection.close();
+            userObject returnObj = new userObject(ID, password, userChecklistRef, userProgramRef, userCourses);
+            return returnObj;
+
+        } catch (Exception e) {
+            System.out.println("Error getting user - ( getUser() - DB.java ) \n");
+            System.out.println(e);
+        }
 
         return null;
     }
@@ -76,13 +138,17 @@ public class DB implements DBInterface {
             System.out.println("Rows updated: " + rowsUpdated);
             DBConnection.close();
 
-        } catch (Exception e) {
+            if (rowsUpdated > 0) {
+                return true;
+            }
 
+        } catch (Exception e) {
+            System.out.println("Error inserting course - ( createCourse() - DB.java ) \n");
             System.out.println(e);
             return false;
         }
 
-        return true;
+        return null;
 
     }
 
@@ -130,6 +196,7 @@ public class DB implements DBInterface {
             return returnObj;
 
         } catch (Exception e) {
+            System.out.println("Error retrieving course - ( getCourse() - DB.java ) \n");
             System.out.println(e);
             return null;
         }
@@ -208,6 +275,7 @@ public class DB implements DBInterface {
             PreparedStatement pstmt = DBConnection.prepareStatement(sql);
             int updatedRows = pstmt.executeUpdate();
             System.out.println("Updated " + updatedRows + " items successfully \n");
+            DBConnection.close();
 
             if (updatedRows > 0) {
                 return true;
@@ -233,6 +301,7 @@ public class DB implements DBInterface {
             PreparedStatement pstmt = DBConnection.prepareStatement(SQL);
             int deletedRows = pstmt.executeUpdate();
             System.out.println("Deleted " + deletedRows + " items successfully \n");
+            DBConnection.close();
 
             if (deletedRows > 0) {
                 return true;
