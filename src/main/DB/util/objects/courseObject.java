@@ -136,6 +136,16 @@ public class courseObject {
     public void setPrerequisites(String prerequisites) {
         this.prerequisites = prerequisites;
     }
+    
+    @Override
+    public String toString() {
+        return "ID: " + ID + ", Name: " + name + ", Description: " + description + ", Term: " + term 
+                + ", Section: " + section + ", CatNum: " + catNum + ", Instructor: " + instructor 
+                + ", Start Time: " + startTime + ", Duration: " + duration + ", Notes: " + notes 
+                + ", Section Director: " + sectionDirector + ", Credits: " + credits + ", Year: " + year 
+                + ", Prerequisites: " + prerequisites + ", Degree Name: " + degreeName;
+    }
+
 
     public void printProperties() {
         System.out.println("ID: " + this.ID);
