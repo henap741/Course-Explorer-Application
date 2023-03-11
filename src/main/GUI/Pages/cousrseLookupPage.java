@@ -83,25 +83,7 @@ public class cousrseLookupPage extends JFrame {
 //			}
 //		});
 //		contentPane.add(back_button, BorderLayout.WEST);
-//
-//		JButton home_button = new JButton("Home");
-//		home_button.setFont(new Font("Times New Roman", Font.BOLD, 12));
-//		home_button.setBounds(186, 11, 68, 23);
-//		home_button.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent e) {
-//				mainMenuPage mainMenuPage = new mainMenuPage();
-//				mainMenuPage.setVisible(true);
-//				dispose();
-//			}
-//		});
-//		contentPane.add(home_button, BorderLayout.EAST);
-//	}
-//	import javax.swing.*;
-//	import java.awt.*;
-//	import java.awt.event.ActionEvent;
-//	import java.awt.event.ActionListener;
-//
-//	public class CourseGUI extends JFrame {
+
 	    private JTextField courseIDField;
 	    private JTextArea courseDetailsArea;
 

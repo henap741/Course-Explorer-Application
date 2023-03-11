@@ -137,7 +137,7 @@ public class courseObject {
         this.prerequisites = prerequisites;
     }
     
-    @Override
+    @Override //To override the toString() method in courseObject class and display data
     public String toString() {
         return "ID: " + ID + ", Name: " + name + ", Description: " + description + ", Term: " + term 
                 + ", Section: " + section + ", CatNum: " + catNum + ", Instructor: " + instructor 

@@ -12,8 +12,9 @@ Development task Assigned: Program Pathway & courseDetailPage implementation
 --> Guest function to mainMenuPage added                                                N/A                     5 mins
 --> Created table programs and populated it with data                                  1 day                    1 hour
 --> Made additions to table courseDetails and populated it with data                   1 day                    3 hours
---> Created program methods in DB                                                      1 hour
+--> Created program methods in DB (Completed by Daoud)                                 1 hour                     N/A
 --> Created methods for retrieving data from programs (!TO DO)                           ?                         ?
+--> Created GUI page for Course Lookup page and logic implemented                      2 days                   2 hours
 
 ===========================================================================      ==================      ==================
  Daoud                                                                             Time Allocated            Time Spent
