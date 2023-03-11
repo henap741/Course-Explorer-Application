@@ -54,8 +54,10 @@ Hena:
      
 Daoud:
 --> DB Table / Schema Design decisions included using Primary Keys of "X" Tables as references (Foreign Keys) in another table.  
---> DB Hosting: Decided it would be worth hosting a single development server that we could all colloborate on. This would reduce headache by setting up the DB once for everyone, rather than everyone dealing with the own instance/problems during setup and development. 
---> DB Persistance Interface Implementation: Develop for each feature/DB table a CRUD (Create/Read/Update/Delete) Interface which Business Logic will interact with
+--> DB Hosting: Decided it would be worth hosting a single development server that we could all colloborate on. This would reduce headache 
+by setting up the DB once for everyone, rather than everyone dealing with the own instance/problems during setup and development. 
+--> DB Persistance Interface Implementation: Develop for each feature/DB table a CRUD (Create/Read/Update/Delete) Interface which 
+Business Logic will interact through.
 --> 
 --> 
 --> 
